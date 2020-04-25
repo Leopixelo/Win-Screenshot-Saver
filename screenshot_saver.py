@@ -1,7 +1,7 @@
 from win32 import win32clipboard
 from time import sleep, gmtime
 from os import mkdir
-from os.path import exists
+from os.path import exists, expanduser
 
 
 def get_timestamp():
@@ -11,7 +11,7 @@ def get_timestamp():
 
 bmp_header_hex = "424d000000000000000042000000"
 
-image_path = "C:/Users/Leonard Gies/Pictures/Screenshots/"
+image_path = expanduser("~") + "/Pictures/Screenshots/"
 
 while True:
     win32clipboard.OpenClipboard()
