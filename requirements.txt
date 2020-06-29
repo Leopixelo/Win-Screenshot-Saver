@@ -1,0 +1,4 @@
+pywin32==228
+
+# for building
+pyinstaller==3.6
