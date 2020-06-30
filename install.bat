@@ -1,4 +1,12 @@
 @echo off
+
+if not "%1"=="am_admin" (
+    copy screenshot_saver.exe "%userprofile%\"
+    copy Screenshot_Saver.xml "%userprofile%\"
+
+    powershell start -verb runas '%0' am_admin & exit /b
+)
+
 set pc_user_name=%COMPUTERNAME%\%USERNAME%
 
 SETLOCAL ENABLEDELAYEDEXPANSION
@@ -10,10 +18,6 @@ FOR /F "tokens=* USEBACKQ" %%i IN (`wmic useraccount where name^="%username%" ge
 ENDLOCAL & set userSID=%var2%
 
 set path_to_exe=%userprofile%\screenshot_saver.exe
-
-::echo %pc_user_name%
-::echo %userSID%
-::echo %path_to_exe%
 
 powershell $xml_path = "\"%userprofile%\Screenshot_Saver.xml\""; $xml_temp = (Get-Content $xml_path) -replace 'pc_user_name', '%pc_user_name%'; $xml_temp = $xml_temp -replace 'userSID', '%userSID%'; $xml_temp = $xml_temp -replace 'path_to_exe', '%path_to_exe%'; $xml_temp ^| Out-File $xml_path
 

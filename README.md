@@ -7,4 +7,4 @@ I used the Windows Task Scheduler to automatically run the Script when I unlock 
 
 # Installation
 ## Windows
-To create a Task to start the Program every time, you log in or unlock your account, run the ```copy.bat``` and grand the request for elevated permissions.
+To create a Task to start the Program every time, you log in or unlock your account, run the ```install.bat``` and grand the request for elevated permissions.
